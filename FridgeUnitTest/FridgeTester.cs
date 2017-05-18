@@ -10,7 +10,7 @@ namespace FridgeUnitTest
     public class FridgeTester
     {
 
-        //maria testar 
+        //maria testar II
         private string inventoryItemMeatballs = "Meatballs";
 
         [TestMethod]
