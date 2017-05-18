@@ -11,6 +11,8 @@ namespace FridgeUnitTest
     {
 
         //maria testar II, bara jag ändrar här 
+//Kjell testar
+        //maria testar II
         private string inventoryItemMeatballs = "Meatballs";
 
         [TestMethod]
