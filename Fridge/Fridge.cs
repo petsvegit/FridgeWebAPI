@@ -8,7 +8,7 @@ namespace Fridge
     public class FridgeWorker
     {
 
-        public List<FridgeInventory> InventoryList = new List<FridgeInventory>();
+        public static List<FridgeInventory> InventoryList = new List<FridgeInventory>();
 
         public bool IsItemAvailable(string ingredient, double quantity)
         {
@@ -20,17 +20,17 @@ namespace Fridge
           return InventoryList.Find(x => x.Name == ingredient);
         }
 
-        public void AddIngredientToFridge(string inventoryName, double quantity)
+        public void AddIngredientToFridge(FridgeInventory item)
         {
-            var existingInventoryItem = GetInventoryItem(inventoryName);
+            var existingInventoryItem = GetInventoryItem(item.Name);
 
             if (existingInventoryItem != null)
             {
-                existingInventoryItem.Quantity += quantity;
+                existingInventoryItem.Quantity += item.Quantity;
                 return;
             }
 
-            InventoryList.Add(new FridgeInventory(inventoryName, quantity));
+            InventoryList.Add(new FridgeInventory(item.Name, item.Quantity));
 
         }
 

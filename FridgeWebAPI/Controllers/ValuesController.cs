@@ -9,8 +9,15 @@ using Fridge;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class FridgeController : Controller
     {
+        private FridgeWorker _fridgeWorker;
+
+        public FridgeController()
+        {
+            _fridgeWorker = new FridgeWorker();
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,48 +29,36 @@ namespace WebAPI.Controllers
         [HttpGet("{name}")]
         public FridgeInventory Get(string name)
         {
-
-            FridgeWorker myFridge = new FridgeWorker();
-
-            myFridge.AddIngredientToFridge("Falukorv", 10);
-            var result = myFridge.GetInventoryItem(name);
-
-            return result;
+            return _fridgeWorker.GetInventoryItem(name);
         }
 
         // GET api/values/5
         [HttpGet("{name}/{quantity}")]
         public bool Get(string name, double quantity)
         {
-
-            FridgeWorker myFridge = new FridgeWorker();
-
-            myFridge.AddIngredientToFridge("Falukorv", 10);
-            var result = myFridge.IsItemAvailable(name, quantity);
-
-            return result;
+            return _fridgeWorker.IsItemAvailable(name, quantity);
         }
 
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]FridgeInventory item)
         {
-            // For more information on protecting this API from Cross Site Request Forgery (CSRF) attacks, see https://go.microsoft.com/fwlink/?LinkID=717803
+            _fridgeWorker.AddIngredientToFridge(item);
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut("{name}")]
+        public void Put(string name, [FromBody]FridgeInventory item)
         {
-            // For more information on protecting this API from Cross Site Request Forgery (CSRF) attacks, see https://go.microsoft.com/fwlink/?LinkID=717803
+            _fridgeWorker.AddIngredientToFridge(item);
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{name}")]
+        public void Delete(string name, [FromBody] FridgeInventory item)
         {
-            // For more information on protecting this API from Cross Site Request Forgery (CSRF) attacks, see https://go.microsoft.com/fwlink/?LinkID=717803
+            _fridgeWorker.TakeItemFromFridge(item.Name, item.Quantity);
         }
     }
 }
