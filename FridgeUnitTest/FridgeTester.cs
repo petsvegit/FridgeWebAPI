@@ -10,10 +10,7 @@ namespace FridgeUnitTest
     public class FridgeTester
     {
 
-        //maria testar II, bara jag ändrar här 
-//Kjell testar
-        //maria testar II
-        private string inventoryItemMeatballs = "Meatballs";
+          private string inventoryItemMeatballs = "Meatballs";
 
 
         [TestMethod]
