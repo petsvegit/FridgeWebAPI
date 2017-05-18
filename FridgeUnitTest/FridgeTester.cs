@@ -9,6 +9,8 @@ namespace FridgeUnitTest
     [TestClass]
     public class FridgeTester
     {
+
+        //maria testar 
         private string inventoryItemMeatballs = "Meatballs";
 
         [TestMethod]
