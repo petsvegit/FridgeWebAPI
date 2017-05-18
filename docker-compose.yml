@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  fridgewebapi:
+    image: fridgewebapi
+    build:
+      context: ./FridgeWebAPI
+      dockerfile: Dockerfile
