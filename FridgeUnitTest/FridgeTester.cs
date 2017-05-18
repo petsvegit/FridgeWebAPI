@@ -13,7 +13,7 @@ namespace FridgeUnitTest
         //maria testar II
         private string inventoryItemMeatballs = "Meatballs";
 
-        //Testar jag da
+
         [TestMethod]
         public void ToEmptyFridgeAddOneInventoryItem()
         {
